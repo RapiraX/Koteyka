@@ -350,6 +350,7 @@ p.review__quote {
     z-index: -10;
 }
 
+/* contacts section */
 .contacts {
     --contacts-container-height: 580px;
     position: relative;
@@ -361,7 +362,7 @@ p.review__quote {
     content: "";
     position: absolute;
     background-color: var(--my-yelow);
-    z-index: -10;
+    z-index: -100;
     top: 0;
     left: 0;
     width: 100%;
@@ -396,18 +397,20 @@ p.review__quote {
 
 .contacts>.wrapper {
     position: relative;
+    /* Из-за того что у внешнего контейнера высота равна нулю, внутренние контейнеры могут вылетать наружу */
     height: 0;
 }
 
 .contacts__map-wrapper {
-    display: flex;
+    display: block;
     justify-content: space-between;
     position: absolute;
     width: 100%;
     height: var(--contacts-container-height);
-    z-index: 10;
+    z-index: -10;
     top: 0;
     left: 0;
+    background-color: lightgreen;
 }
 
 .contacts__empty {
@@ -417,9 +420,8 @@ p.review__quote {
 
 .contacts__map {
     flex: 0 1 60%;
-    background-color: var(--my-orange);
+    background-color: green;
 }
-
 
 /* footer */
 .footer {
@@ -472,10 +474,6 @@ p.review__quote {
         flex-direction: column;
     }
 
-    .contacts__map-wrapper {
-        /* flex-direction: column; */
-    }
-
     .nav__menu {
         gap: 20px;
     }
@@ -490,13 +488,23 @@ p.review__quote {
     .book__img::before {
         display: none;
     }
+    .contacts {
+        height: fit-content;
+    }
+    .contacts>.wrapper {
+        position: relative;
+        /* Из-за того что у внешнего контейнера высота равна нулю, внутренние контейнеры могут вылетать наружу */
+        height: fit-content;
+    }
+
     .contacts__map-wrapper {
         position: relative;
+        z-index: 100;
+    }
+    .contacts__content {
+        padding: 30px 0;
     }
     .review__card:last-child {
         display: none;
-    }
-    .contacts__map-wrapper {
-        position: static;
     }
 }
